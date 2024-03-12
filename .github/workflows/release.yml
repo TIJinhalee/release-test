@@ -4,7 +4,7 @@ name: Release
     branches: [ dev ]
 
 jobs:
-  build:
+  release:
     name: release
     runs-on: ubuntu-latest
     steps:
