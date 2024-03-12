@@ -151,7 +151,7 @@
     "cypress": "^13.6.6",
     "cz-conventional-changelog": "^3.3.0",
     "or": "^0.2.0",
-    "semantic-release": "^23.0.2"
+    "semantic-release": "^19.0.5"
   },
   "config": {
     "commitizen": {
