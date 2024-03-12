@@ -3,18 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@semantic-release/commit-analyzer": "^11.1.0",
+    "@semantic-release/github": "^9.2.6",
+    "@semantic-release/npm": "^11.0.3",
+    "@semantic-release/release-notes-generator": "^12.1.0",
+    "@tanstack/react-query": "^5.20.5",
+    "@tanstack/react-query-devtools": "^5.21.7",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "antd": "^5.14.1",
+    "axios": "^1.6.7",
+    "commitizen": "^4.3.0",
+    "json-server": "^1.0.0-alpha.23",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "styled-components": "^6.1.8",
+    "web-vitals": "^2.1.4",
+    "zustand": "^4.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "npx cypress open",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -34,5 +48,106 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalcommits",
+          "presetConfig": {
+            "types": [
+              {
+                "type": "feat",
+                "section": "✨ Features",
+                "hidden": false
+              },
+              {
+                "type": "fix",
+                "section": "🐛 Bug fixes",
+                "hidden": false
+              },
+              {
+                "type": "perf",
+                "section": "🌈 Performance",
+                "hidden": false
+              },
+              {
+                "type": "refactor",
+                "section": "♻️ Refactor",
+                "hidden": false
+              },
+              {
+                "type": "docs",
+                "section": "📝 Docs",
+                "hidden": false
+              },
+              {
+                "type": "style",
+                "section": "💄 Styles",
+                "hidden": false
+              },
+              {
+                "type": "revert",
+                "section": "🕐 Reverts",
+                "hidden": false
+              },
+              {
+                "type": "ci",
+                "section": "💫 CI/CD",
+                "hidden": false
+              },
+              {
+                "type": "test",
+                "section": "✅ Tests",
+                "hidden": true
+              },
+              {
+                "type": "chore",
+                "section": "📦 Chores",
+                "hidden": false
+              },
+              {
+                "type": "move",
+                "section": "🚚 Move files",
+                "hidden": true
+              },
+              {
+                "type": "remove",
+                "section": "🔥 Remove files",
+                "hidden": true
+              }
+            ]
+          }
+        }
+      ],
+      "@semantic-release/npm",
+      [
+        "@semantic-release/git",
+        {
+          "assets": "package.json",
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ],
+      "@semantic-release/github"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TIJinhalee/release-test.git"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "devDependencies": {
+    "@semantic-release/git": "^10.0.1",
+    "@testing-library/react-hooks": "^8.0.1",
+    "cypress": "^13.6.6",
+    "or": "^0.2.0",
+    "semantic-release": "^23.0.2"
   }
 }
